@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<title>
+			crochet shop
+		</title>
+		<link type="text/css" rel="stylesheet" href="css/css.css">
+		<script language>
+	function f1()
+	{
+		return confirm("are you sure want to update?");
+	}
+	function f2()
+	{
+		return confirm("are you sure want to delete?");
+	}
+	</script>
+	</head>
+	<body>
+	
+	<?php
+		session_start();
+		if($_REQUEST['page'])
+		{
+			$page=$_REQUEST['page'];
+		}
+	?>
+	<div id="wrapper">
+		<div id="header">
+		<div class="login">
+		<?php
+			session_start();
+			if(isset($_SESSION['r_id']))
+			{
+				echo"<image src='upload/60.jfif' height='100px' width='100px'align='left'/>";
+				echo"<a href='index.php?page=logout'><img src='upload/104.jfif' height='100px' width='100px'  align='right'/></a></br>";
+					
+				echo"Welcome:".$_SESSION['r_username'];
+				echo"</br>";
+				echo"<a href='index.php?page=changepassword'class='log1'>changepassword</a></br>";
+					
+			}
+			else
+			{
+				echo"<image src='upload/60.jfif' height='100px' width='100px'align='left'/>";
+				echo"<a href='index.php?page=login' class='log'><img src='upload/105.jfif' height='100px' width='100px'  align='right'/></a></br>";
+			}
+			?>
+			</div>
+			<div class="title" >crochet shop</div>
+		</div>
+		<div class="menu" style="font-size:30">
+	<?php
+		session_start();
+	if(isset($_SESSION[r_id]))
+	{
+		echo"<a href='index.php?page=home'class='space'>Home</a>&nbsp&nbsp&nbsp&nbsp";
+		echo"<a href='index.php?page=contactus'class='space'>contactus</a>&nbsp&nbsp&nbsp&nbsp";
+		echo"<a href='index.php?page=aboutus'class='space'>aboutus</a>&nbsp&nbsp&nbsp&nbsp";
+		echo"<a href='index.php?page=feedback'class='space'>feedback</a>&nbsp&nbsp&nbsp&nbsp";
+		echo"<a href='index.php?page=gallary'class='space'>product</a>&nbsp&nbsp&nbsp&nbsp";
+		echo"<a href='index.php?page=procart'class='space'>addtocart</a>&nbsp&nbsp&nbsp&nbsp";
+	}
+	
+	else
+	{
+		echo"<a href='index.php?page=home'class='space'>Home</a>&nbsp&nbsp&nbsp&nbsp";
+		echo"<a href='index.php?page=contactus'class='space'>contactus</a>&nbsp&nbsp&nbsp&nbsp";
+		echo"<a href='index.php?page=aboutus'class='space'>aboutus</a>&nbsp&nbsp&nbsp&nbsp";
+		echo"<a href='index.php?page=gallary'class='space'>product</a>&nbsp&nbsp&nbsp&nbsp";
+	}
+	
+	?>
+	</div>
+		<div class="content" align="center">
+			<?php
+				if(isset($page))
+				{
+					include("include/".$page.".php");
+				}
+				else
+				{
+					include("include/home.php");
+				}
+			?>
+		</div>
+	
+	
+		<div class="footer" align="center">
+		Developed By : Devangi Patoliya & vishva Tilala
+		</div>
+	</div>
+	
+		</body>
+</html>

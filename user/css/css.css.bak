@@ -1,0 +1,87 @@
+#wrapper
+{
+	border:solid 1px color:black;
+	border-solid:1px;	
+	background-image:url("../upload/89.jfif");
+	background-repeat-x:no repeat;
+	background-repeat-y:no repeat;
+	background-size:100% 100%;
+}
+#header
+{
+	height:18.8%;
+	width:100%;
+	color:black;
+	text-align:right;
+	text-shadow:1px 1px black;
+	font-size:15px;
+	font-family:Times New Roman;
+	border:solid 1px black;
+}
+.content{
+	height:auto;
+	width:auto;
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 0px 0px;
+	font-size:20px;
+	border:solid 1px black;
+	border-solid:1px;
+	font-family:Imprint MT Shadow;
+	font-style:italic;
+	
+}
+.title
+{
+	font-size:50;
+	font-family:Algerian;
+	text-align:center;
+	color:black;
+	text-shadow:3px 3px black;
+}
+.footer
+{
+	border:solid 1px black;
+	border-solid:1px;
+	height:5%;
+	width:100%;
+	font-size:22;
+	border-bottom:solid 1px black;
+	font-family:Algerian;
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 0px 0px;
+	text-shadow:1px 1px black;
+	font-style:bold;
+	text-align:center;
+}
+
+a
+{
+	font-size:18;
+	font-family:Algerian;
+	text-decoration:none;
+	color:black;
+	border-bottom:solid 1px none;
+	border-top:solid 1px none;
+	
+	
+}
+.menu
+{
+	height:5%;
+	width:100%;
+	border:solid 1px black;
+	border-solid:1px;
+	text-align:center;
+}
+
+.float_left_img
+{
+	float:left;
+	height:170px;
+	width:240px
+}
+.log
+{
+	float:right;
+	padding:10px 5px 0px 10px;
+}
