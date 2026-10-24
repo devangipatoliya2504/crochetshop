@@ -4,23 +4,32 @@ if (function_exists('mysqli_report')) {
     mysqli_report(MYSQLI_REPORT_OFF);
 }
 
-// UwAmp uses MariaDB on port 8000, user 'root', password 'root'
-$db_host = "127.0.0.1";
-$db_user = "root";
-$db_name = "crochetshop";
+// Auto-detect environment: InfinityFree Online Hosting vs Localhost (UwAmp / XAMPP)
+$is_online = isset($_SERVER['HTTP_HOST']) && (
+    strpos($_SERVER['HTTP_HOST'], 'infinityfree') !== false ||
+    strpos($_SERVER['HTTP_HOST'], 'epizy') !== false ||
+    strpos($_SERVER['HTTP_HOST'], 'rf.gd') !== false ||
+    strpos($_SERVER['HTTP_HOST'], '42web') !== false ||
+    ($_SERVER['HTTP_HOST'] !== 'localhost' && strpos($_SERVER['HTTP_HOST'], '127.0.0.1') === false)
+);
 
-// Attempt connection: UwAmp default is port 8000 with password 'root'
-$candidates = [
-    ['port' => 8000, 'pass' => 'root'],
-    ['port' => 3306, 'pass' => 'root'],
-    ['port' => 3306, 'pass' => ''],
-    ['port' => 8000, 'pass' => ''],
-];
+if ($is_online) {
+    $candidates = [
+        ['host' => 'sql110.infinityfree.com', 'user' => 'if0_43258627', 'pass' => 'Utl3LCFvwgiv1c', 'name' => 'if0_43258627_crochetshop', 'port' => 3306],
+        ['host' => '127.0.0.1', 'user' => 'root', 'pass' => 'root', 'name' => 'crochetshop', 'port' => 8000],
+    ];
+} else {
+    $candidates = [
+        ['host' => '127.0.0.1', 'user' => 'root', 'pass' => 'root', 'name' => 'crochetshop', 'port' => 8000],
+        ['host' => '127.0.0.1', 'user' => 'root', 'pass' => '', 'name' => 'crochetshop', 'port' => 3306],
+        ['host' => 'sql110.infinityfree.com', 'user' => 'if0_43258627', 'pass' => 'Utl3LCFvwgiv1c', 'name' => 'if0_43258627_crochetshop', 'port' => 3306],
+    ];
+}
 
 $con = null;
 foreach ($candidates as $cand) {
     try {
-        $test_con = @mysqli_connect($db_host, $db_user, $cand['pass'], $db_name, $cand['port']);
+        $test_con = @mysqli_connect($cand['host'], $cand['user'], $cand['pass'], $cand['name'], $cand['port']);
         if ($test_con && !mysqli_connect_errno()) {
             $con = $test_con;
             break;
