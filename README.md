@@ -65,7 +65,7 @@ crochetshop/
 
 ### Step 1: Clone or Download the Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/crochetshop.git
+git clone https://github.com/devangipatoliya2504/crochetshop.git
 ```
 Place the folder inside your web server root directory:
 - For **UwAmp**: `E:\UwAmp\www\crochetshop`
